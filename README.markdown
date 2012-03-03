@@ -1,5 +1,4 @@
 Templates for [pandoc](http://github.com/jgm/pandoc).
 
-If you use custom templates, we recommend forking this repository,
-so that you can integrate changes to the default templates in future
-pandoc releases.
+This is a fork of [pandoc-templates](https://github.com/jgm/pandoc-templates), with some random templates aimed at my own use, which can be found in the `mine` folder.
+
