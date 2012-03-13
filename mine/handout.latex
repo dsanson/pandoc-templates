@@ -5,12 +5,15 @@
 \ifxetex
   \usepackage{fontspec,xltxtra,xunicode}
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
 \else
   \ifluatex
     \usepackage{fontspec}
     \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+    \newcommand{\euro}{€}
   \else
     \usepackage[utf8]{inputenc}
+    \usepackage{eurosym}
   \fi
 \fi
 $if(natbib)$
@@ -23,9 +26,14 @@ $if(biblio-files)$
 \bibliography{$biblio-files$}
 $endif$
 $endif$
-$if(lhs)$
+$if(listings)$
 \usepackage{listings}
+$endif$
+$if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
 $endif$
 $if(verbatim-in-note)$
 \usepackage{fancyvrb}
@@ -61,9 +69,13 @@ $endif$
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+              xetex,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \else
-  \usepackage[unicode=true]{hyperref}
+  \usepackage[unicode=true,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 $if(strikeout)$
@@ -77,15 +89,20 @@ $endif$
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
-$if(listings)$
-\usepackage{listings}
-$endif$
 $if(numbersections)$
 $else$
 \setcounter{secnumdepth}{0}
 $endif$
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+$if(lang)$
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{$mainlang$}
+\else
+  \usepackage[$lang$]{babel}
+\fi
 $endif$
 $for(header-includes)$
 $header-includes$
