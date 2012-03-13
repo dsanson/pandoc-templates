@@ -2,6 +2,9 @@
   \enableregime[utf-8]  
   \setupcolors[state=start]
 \stopmode
+$if(mainlang)$
+\mainlanguage[$mainlang$]
+$endif$
 
 % Enable hyperlinks
 \setupinteraction[state=start, color=middleblue]
@@ -21,7 +24,8 @@
 \setuphead[subsection]   [style=\tfb]
 \setuphead[subsubsection][style=\bf]
 
-$if(number-sections)$$else$
+$if(number-sections)$
+$else$
 \setuphead[chapter, section, subsection, subsubsection][number=no]
 $endif$
 
