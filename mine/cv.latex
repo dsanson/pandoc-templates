@@ -115,12 +115,12 @@ $endif$
 
 
 % Remove the author and date fields and the space associated with them
-% from the definition of maketitle!
+% from the definition of maketitle
 \makeatletter
 \renewcommand{\@maketitle}{
 \newpage
 \begin{center}%
-{\Large \@title } \\ \@author \par%
+{\Large \@title } \par \@author \par%
 \end{center}%
 \par} \makeatother
 
@@ -142,17 +142,14 @@ $endif$
 \renewcommand{\labelitemii}{}
 \renewcommand{\labelitemiii}{}
 
-% adjust linespacing for itemize
+% adjust line spacing and indents for lists
 
-\let\olditemize=\itemize
-\def\itemize{
-\olditemize
-\setlength{\itemsep}{-1ex}
-}
+\usepackage{enumitem}
+\setlist{nolistsep, itemindent=-2.5em}
 
 % adjust formatting of tables
 
-\renewcommand{\arraystretch}{.4}
+%\renewcommand{\arraystretch}{-.1}
 
 
 \begin{document}
