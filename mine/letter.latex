@@ -4,12 +4,15 @@
 \ifxetex
   \usepackage{fontspec,xltxtra,xunicode}
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
 \else
   \ifluatex
     \usepackage{fontspec}
     \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+    \newcommand{\euro}{€}
   \else
     \usepackage[utf8]{inputenc}
+    \usepackage{eurosym}
   \fi
 \fi
 $if(natbib)$
@@ -22,9 +25,14 @@ $if(biblio-files)$
 \bibliography{$biblio-files$}
 $endif$
 $endif$
-$if(lhs)$
+$if(listings)$
 \usepackage{listings}
+$endif$
+$if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
 $endif$
 $if(verbatim-in-note)$
 \usepackage{fancyvrb}
@@ -45,8 +53,8 @@ $endif$
 $if(url)$
 \usepackage{url}
 $endif$
-\usepackage{graphicx}
 $if(graphics)$
+\usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
 % are scaled down if they would overflow the margins.
@@ -86,6 +94,14 @@ $endif$
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
+$if(lang)$
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{$mainlang$}
+\else
+  \usepackage[$lang$]{babel}
+\fi
+$endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
@@ -94,7 +110,7 @@ $if(title)$
 \title{$title$}
 $endif$
 $if(author)$
-\author{$for(author)$$author$\\ $endfor$}
+\author{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
 $if(date)$
 \date{$date$}
