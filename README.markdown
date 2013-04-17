@@ -1,9 +1,4 @@
-# Future home of some random pandoc templates
+Templates for [pandoc](http://github.com/jgm/pandoc).
 
-These are some [templates][tmp] I use with pandoc. Don't expect much from them!
-
-[tmp]: http://johnmacfarlane.net/pandoc/README.html#templates
-
-
-
+This is a fork of [pandoc-templates](https://github.com/jgm/pandoc-templates), with some random templates aimed at my own use, which can be found in the `mine` folder.
 
