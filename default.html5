@@ -9,14 +9,13 @@ $endfor$
 $if(date-meta)$
   <meta name="dcterms.date" content="$date-meta$">
 $endif$
-  <title>$if(title-prefix)$$title-prefix$ - $endif$$if(pagetitle)$$pagetitle$$endif$</title>
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+  <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 $if(quotes)$
-  <style type="text/css">
-    q { quotes: "“" "”" "‘" "’"; }
-  </style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
 $endif$
 $if(highlighting-css)$
   <style type="text/css">

@@ -7,7 +7,8 @@ $endfor$
 $if(date-meta)$
   <meta name="dcterms.date" content="$date-meta$" />
 $endif$
-  <title>$if(title-prefix)$$title-prefix$ - $endif$$if(pagetitle)$$pagetitle$$endif$</title>
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+  <style type="text/css">code{white-space: pre;}</style>
 $if(highlighting-css)$
   <style type="text/css">
 $highlighting-css$
@@ -20,7 +21,7 @@ $endfor$
 $else$
 <style>
   html { background-color: black; }
-  body { background-color: white; }
+  body { background-color: white; border-radius: 12px}
   /* A section is a slide. It's size is 800x600, and this will never change */
   section {
       font-family: Arial, serif;
@@ -39,20 +40,24 @@ $else$
   h1 { font-size: 180%; }
   h2 { font-size: 120%; }
   h3 { font-size: 100%; }
+  q { quotes: "“" "”" "‘" "’"; }
   blockquote { font-style: italic }
-  q {
-    display: inline-block;
-    width: 700px;
-    height: 600px;
+  /* Figures are displayed full-page, with the caption on
+     top of the image/video */
+  figure {
     background-color: black;
-    color: white;
-    font-size: 60px;
-    padding: 50px;
+  }
+  figcaption {
+    margin: 70px;
   }
   footer {
     position: absolute;
-    bottom: 10px;
-    right: 20px;
+    bottom: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: right;
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
   }
 
   /* Transition effect */
