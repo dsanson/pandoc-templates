@@ -94,7 +94,6 @@ $endfor$
 $endif$
 $if(natbib)$
 \usepackage{natbib}
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
 \usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
@@ -243,6 +242,7 @@ $if(book-class)$
 $else$
 \renewcommand\refname{$biblio-title$}
 $endif$
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 
